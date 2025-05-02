@@ -1,0 +1,51 @@
+/*  #region Our-Clients */
+
+.our-clients-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 30px 0 26px;
+}
+
+.our-clients-title {
+    font-weight: 700;
+    font-size: 36px;
+    color: #22343d;
+    margin-bottom: 42px;
+}
+
+.our-clients-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 60px 50px;
+}
+
+.Airbnb-img {
+    width: 159px;
+}
+
+.Google-img {
+    width: 146px;
+}
+
+.Microsoft-img {
+    width: 164px;
+}
+
+.FedEx-img {
+    width: 140px;
+}
+
+@media screen and (min-width:1440px) {
+
+    .our-clients-list {
+        gap: 64px;
+    }
+
+    .our-clients-title {
+        margin-bottom: 50px;
+    }
+}
+
+/*   #endregion Our-Clients */

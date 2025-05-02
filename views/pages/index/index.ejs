@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Business promotion</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@500&family=Inter:opsz,wght@14..32,500;700&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <%- include('../../partials/header') %>
+
+    <main>
+      <%- include('./sections/hero') %>
+      <%-include('./sections/product') %>
+      <%-include('./sections/management') %>
+      <%-include('./sections/customers') %>
+      <%-include('./sections/collaborative') %>
+      <%-include('./sections/process') %>
+      <%-include('./sections/contents') %>
+
+      <h2 class="price-title">Price Table</h2>
+      <p class="price-text">We offer competitive price</p>
+
+      <%- include('../../partials/price') %> <%-
+      include('./sections/clients') %>
+      <%-include('../../partials/compannies') %>
+    </main>
+    <%- include('../../partials/footer') %>
+    <%-include('../../partials/backdrop') %>
+  </body>
+</html>

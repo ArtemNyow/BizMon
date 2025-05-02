@@ -1,0 +1,97 @@
+/*  #region Clients */
+.clients-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 42px;
+}
+
+.clients-title {
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    color: #22343d;
+    margin-bottom: 8px;
+}
+
+.clients-text {
+    font-weight: 500;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #22343d;
+    margin-bottom: 32px
+}
+
+.clients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+}
+
+
+.clients-list-container {
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.clients-list-text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+    color: #32454f;
+}
+
+.client-img-info {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+}
+
+.client-info {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.clients-list-title {
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    color: #02897a;
+}
+
+.clients-list-proffession {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.71;
+    letter-spacing: 0.01em;
+    color: #252b42;
+}
+
+@media screen and (min-width:1440px) {
+
+    .clients-title {
+        margin-bottom: 10px;
+    }
+
+
+    .clients-text {
+        width: 537px;
+        margin-bottom: 40px;
+    }
+
+    .clients-list {
+        flex-direction: row;
+        gap: 64px;
+    }
+}
+
+/*   #endregion Clients */

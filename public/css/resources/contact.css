@@ -1,0 +1,132 @@
+/*  #region Contact Us */
+.contact-title {
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #252b42;
+    margin-bottom: 7px;
+}
+
+.contact-text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #374754;
+    margin-bottom: 35px;
+}
+
+.contact-list-icon {
+    display: flex;
+    flex-direction: row;
+    gap: 21px;
+    justify-content: center;
+    margin-bottom: 56px;
+}
+
+.contact-icon-container {
+    border-radius: 100%;
+    fill: #edfffc;
+}
+
+.contact-socials-icon {
+    stroke-width: 2px;
+    stroke: #02897a;
+    fill: none;
+}
+
+.contact-map {
+    width: 100%;
+    height: 323px;
+    margin-bottom: 100px;
+}
+
+.contact-form-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.4;
+    letter-spacing: 0em;
+    color: #252b42;
+    text-align: center;
+    margin-bottom: 31px;
+}
+
+.contaict-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.contact-input-name {
+    border: 1px solid #e8e8e8;
+    border-radius: 39px;
+    padding: 19px 20px;
+    width: 100%;
+    height: 54px;
+    background: #f5f5f5;
+
+
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.07;
+    letter-spacing: 0.01em;
+    color: #22343d;
+}
+
+.contact-input-email {
+    border: 1px solid #e8e8e8;
+    border-radius: 39px;
+    padding: 19px 20px;
+    width: 100%;
+    height: 54px;
+    background: #f5f5f5;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.07;
+    letter-spacing: 0.01em;
+    color: #22343d;
+}
+
+.contact-input-massage {
+    border: 1px solid #e8e8e8;
+    padding: 23px 20px;
+    width: 100%;
+    height: 193px;
+    background: #f5f5f5;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.07;
+    letter-spacing: 0.01em;
+    color: #22343d;
+    resize: none;
+}
+
+.contact-form-btn {
+    border-radius: 35px;
+    padding: 18px 38px;
+    width: 145px;
+    height: 52px;
+    background: #02897a;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: #fff;
+}
+
+@media screen and (min-width:1440px) {
+    .contact-container {
+        width: 871px;
+    }
+
+    .form-wrap {
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        padding: 52px 50px;
+    }
+
+}
+
+/*   #endregion Contact Us  */

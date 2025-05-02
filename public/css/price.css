@@ -1,0 +1,147 @@
+/*  #region Price */
+
+
+.price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.price-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+}
+
+.price-list-container {
+    border-radius: 8px;
+    width: 322px;
+    height: 456px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.price-list-item:nth-child(even) {
+    background-color: #02897a;
+    border-radius: 8px;
+
+    .price-list-title {
+        color: #fff;
+    }
+
+    .price-list-text {
+        color: #fff;
+    }
+
+    .price {
+        color: #fff;
+    }
+
+    .dollar {
+        color: #fff;
+    }
+
+    .price-list-cost {
+        color: #e0e0e0;
+    }
+
+    .price-list-advant-item {
+        color: #fff;
+    }
+
+    .price-btn {
+        background-color: #fff;
+        color: #02897a;
+    }
+}
+
+
+.price-list-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.7;
+    color: #22343d;
+    margin-bottom: 8px;
+}
+
+.price-list-text {
+    font-weight: 400;
+    line-height: 2.5;
+    color: #22343d;
+    margin-bottom: 16px;
+}
+
+.price-list-cost {
+
+    font-weight: 400;
+    line-height: 1.19;
+    letter-spacing: 0.01em;
+    color: #afafaf;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: last baseline;
+    gap: 8px;
+}
+
+.price-dollar-month {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.price {
+
+    font-weight: 700;
+    font-size: 76px;
+    line-height: 1.31;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #02897a;
+}
+
+.dollar {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.3;
+    letter-spacing: 0em;
+    color: #02897a;
+}
+
+.price-list-advant {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 38px;
+}
+
+.price-btn {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 8px;
+    width: 139px;
+    height: 44px;
+    background: #02897a;
+    border: none;
+}
+
+@media screen and (min-width:1440px) {
+
+
+    .price-list {
+        flex-direction: row;
+        gap: 72px;
+    }
+}
+
+/*   #endregion Price */
