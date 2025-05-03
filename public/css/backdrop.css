@@ -1,83 +1,91 @@
 .backdrop {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 999;
+    font-family: 'Poppins', sans-serif;
 }
 
 .is-hidden {
     display: none;
 }
 
+.hidden {
+    display: none;
+}
+
 .modal {
     background-color: #ffffff;
     padding: 2.5rem 2rem;
-    border-radius: 20px;
+    border-radius: 24px;
     width: 90%;
-    max-width: 550px;
+    max-width: 480px;
     position: relative;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .modal-colored {
-    background: linear-gradient(135deg, #e3f2fd, #ffffff);
+    background: linear-gradient(135deg, #f2fffc, #ffffff);
 }
 
 .modal h2 {
     font-size: 2rem;
     margin-bottom: 0.25rem;
     text-align: center;
-    color: #0d47a1;
+    color: #02897a;
 }
 
 .subtitle {
     text-align: center;
     font-size: 1rem;
-    color: #333;
+    color: #555;
     margin-bottom: 1.5rem;
 }
 
 label {
     display: block;
     margin-bottom: 1rem;
-    font-weight: bold;
-    color: #333;
+    font-weight: 500;
+    color: #22343d;
+    font-size: 0.95rem;
 }
 
 input {
     width: 100%;
-    padding: 0.7rem;
+    padding: 0.75rem 1rem;
     margin-top: 0.3rem;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    font-size: 0.95rem;
 }
 
 .submit-btn {
     width: 100%;
     padding: 0.75rem;
-    background-color: #1976d2;
-    color: white;
-    font-weight: bold;
+    background-color: #02897a;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-top: 1rem;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
 .submit-btn:hover {
-    background-color: #1565c0;
+    background-color: #026b61;
 }
 
 .google-btn {
     width: 100%;
     padding: 0.6rem;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -85,24 +93,29 @@ input {
     gap: 0.5rem;
     margin-bottom: 1rem;
     cursor: not-allowed;
-    /* Активуємо після додавання логіки */
+    color: #797979;
 }
 
-.google-btn img {
+.google-btn:hover {
+    color: #fff;
+}
+
+.google-btn svg {
     width: 20px;
     height: 20px;
+    fill: #757575;
 }
 
 .divider {
     text-align: center;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     position: relative;
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 0.85rem;
+    color: #888;
 }
 
 .divider span {
-    background-color: #ffffffcc;
+    background-color: #fff;
     padding: 0 1rem;
     position: relative;
     z-index: 1;
@@ -123,11 +136,17 @@ input {
     text-align: center;
     margin-top: 1rem;
     font-size: 0.9rem;
+    color: #555;
 }
 
 .auth-redirect a {
-    color: #1976d2;
+    color: #02897a;
     text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-redirect a:hover {
+    text-decoration: underline;
 }
 
 .close-btn {
@@ -138,5 +157,10 @@ input {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #333;
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #ffffff;
 }

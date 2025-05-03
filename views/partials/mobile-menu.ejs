@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/css/mobile-menu.css" />
+<div
+  class="mobile-menu-backdrop is-hidden"
+  id="mobile-drawer"
+>
+  <div class="mobile-menu">
+    <button
+      class="mobile-menu-close"
+      id="close-mobile-menu"
+    >
+      &times;
+    </button>
+
+    <div class="mobile-menu-header">
+      <img
+        src="/assets/images/logo/logo.svg"
+        alt="Logo"
+        width="36"
+      />
+      <span class="mobile-menu-title">BizMon</span>
+    </div>
+
+    <nav class="mobile-menu-nav">
+      <a href="/">Home</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/customers">Customers</a>
+      <a href="/resources">Resources</a>
+    </nav>
+
+    <div class="mobile-menu-actions">
+      <button
+        class="header-btn open-modal-btn"
+        data-target="login-backdrop"
+        data-type="login"
+      >
+        Sign In
+      </button>
+      <button
+        class="header-btn open-modal-btn"
+        data-target="register-backdrop"
+        data-type="register"
+      >
+        Sign Up
+      </button>
+    </div>
+  </div>
+</div>

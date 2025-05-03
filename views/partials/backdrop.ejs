@@ -22,7 +22,7 @@
     <div class="divider"><span>or</span></div>
 
     <!-- Форма реєстрації -->
-    <form id="register-form">
+    <form id="register-form" class="auth-form">
       <label>
         Full Name
         <input type="text" name="name" required />
@@ -47,7 +47,48 @@
 
     <p class="auth-redirect">
       Already have an account?
-      <a href="/">Login here</a>
+      <a href="#" id="switch-to-login">Login here</a>
+    </p>
+  </div>
+</div>
+
+<!-- Модальне вікно логіну -->
+<div class="backdrop is-hidden" id="login-backdrop">
+  <div class="modal modal-colored">
+    <button class="close-btn" id="close-login">
+      &times;
+    </button>
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Log in to your account</p>
+
+    <!-- Кнопка Google Sign-In -->
+    <button class="google-btn" disabled>
+      <svg width="28" height="28">
+        <use href="./assets/icons.svg#icon-google"></use>
+      </svg>
+      Sign in with Google
+    </button>
+
+    <div class="divider"><span>or</span></div>
+
+    <!-- Форма логіну -->
+    <form id="login-form" class="auth-form hidden">
+      <label>
+        Email
+        <input type="email" name="email" required />
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" required />
+      </label>
+      <button type="submit" class="submit-btn">
+        Sign In
+      </button>
+    </form>
+
+    <p class="auth-redirect">
+      Don't have an account?
+      <a href="#" id="switch-to-register">Register here</a>
     </p>
   </div>
 </div>

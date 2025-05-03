@@ -39,21 +39,31 @@
     </nav>
     <ul class="header-btn-list">
       <li class="header-btn-item">
-        <button class="header-btn sing-in" type="button">
+        <button
+          class="header-btn sing-in open-modal-btn"
+          type="button"
+          data-target="login-backdrop"
+          data-type="login"
+        >
           Sing In
         </button>
       </li>
       <li class="header-btn-item">
-        <button class="header-btn" type="button">
+        <button
+          class="header-btn open-modal-btn"
+          type="button"
+          data-target="register-backdrop"
+          data-type="register"
+        >
           Sing Up
         </button>
       </li>
     </ul>
-    <a class="menu-link">
+    <button class="menu-link" type="button">
       <svg width="28" height="31">
         <use href="./assets/icons.svg#icon-menu-link"></use>
       </svg>
-    </a>
+    </button>
   </div>
 </header>
 <!-- #endregion Header -->

@@ -49,6 +49,39 @@
       <%-include('../../partials/compannies') %>
     </main>
     <%- include('../../partials/footer') %>
-    <%-include('../../partials/backdrop') %>
+    <%-include('../../partials/backdrop') %> <%-
+    include('../../partials/mobile-menu') %>
+    <button
+      class="scroll-to-top"
+      id="scrollToTopBtn"
+      aria-label="Scroll to top"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M12 4L12 20"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M6 10L12 4L18 10"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+    >
+
+    <script src="/assets/js/auth-modal.js" defer></script>
+    <script
+      src="/assets/js/scroll-to-top.js"
+      defer
+    ></script>
   </body>
 </html>

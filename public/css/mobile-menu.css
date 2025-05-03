@@ -1,0 +1,115 @@
+.mobile-menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 999;
+}
+
+.mobile-menu {
+    width: 280px;
+    height: 100%;
+    background: linear-gradient(135deg, #f0f4f8, #ffffff);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease forwards;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.is-closing {
+    animation: slideOut 0.3s ease forwards;
+}
+
+.mobile-menu-close {
+    align-self: flex-end;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.mobile-menu-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.mobile-menu-title {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #22343d;
+}
+
+.mobile-menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0 auto;
+}
+
+.mobile-menu-nav a,
+.mobile-menu-nav button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #22343d;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: left;
+}
+
+.mobile-menu-nav a:hover,
+.mobile-menu-nav button:hover {
+    background-color: #e0f7fa;
+}
+
+.mobile-menu-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.mobile-menu-actions .header-btn {
+    background-color: #02897a;
+    color: #fff;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.mobile-menu-actions .header-btn:hover {
+    background-color: #026f64;
+}
+
+.is-hidden {
+    display: none;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}

@@ -28,6 +28,15 @@
 
 .menu-link {
     cursor: pointer;
+    border: none;
+    background-color: unset;
+}
+
+.menu-link:focus,
+.menu-link:hover.menu-link:active {
+    border: none;
+    background-color: unset;
+    box-shadow: none;
 }
 
 @media screen and (min-width:1440px) {
@@ -85,6 +94,7 @@
 
     .menu-link {
         display: none;
+
     }
 }
 

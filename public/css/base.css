@@ -207,3 +207,60 @@ section {
     color: #22343d;
     margin-bottom: 50px;
 }
+
+.header-btn:focus:not(:focus-visible),
+.header-btn:active {
+    background-color: #02897a;
+    transform: none;
+    box-shadow: none;
+
+}
+
+body {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+body.fade-out {
+    opacity: 0;
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #02897a, #00bfa6);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 999;
+}
+
+.scroll-to-top svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+}
+
+.scroll-to-top:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #026f64, #009e8a);
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-menu-backdrop:not(.is-hidden)~.scroll-to-top {
+    display: none;
+}
