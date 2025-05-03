@@ -1,6 +1,8 @@
-/*  #region faq */
+/* FAQ Section */
 .faq-container {
-    padding: 0 24px 0 32px;
+    padding: 0 24px;
+    max-width: 920px;
+    margin: 0 auto;
 }
 
 .faq-title {
@@ -8,7 +10,7 @@
     font-size: 32px;
     text-align: center;
     color: #22343d;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .faq-text {
@@ -16,60 +18,70 @@
     font-size: 18px;
     text-align: center;
     color: #22343d;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
 }
 
 .faq-list-item {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border-bottom: 1px solid #e7e7e7;
-    gap: 16px;
-    padding-bottom: 22px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
+    overflow: hidden;
 }
 
 .faq-list-container {
     display: flex;
-    gap: 16px;
-    cursor: pointer;
     align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 0;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
 
+.faq-list-container:hover {
+    background-color: #f4fafa;
 }
 
 .faq-icon {
+    min-width: 24px;
+    min-height: 24px;
     fill: #02897a;
+    transition: transform 0.3s ease;
 }
 
 .faq-list-title {
-    font-weight: 500;
-    font-size: 18px;
+    font-size: 1.1rem;
+    font-weight: 600;
     color: #22343d;
 }
 
+/* Answer block */
 .faq-list-text {
-    font-weight: 400;
-    color: #22343d;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.3s ease;
+    color: #4f5d75;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0 2rem;
+    text-align: left;
 }
 
-@media screen and (min-width:1440px) {
-
-    .faq-container {
-        width: 920px;
-    }
-
-    .faq-title {
-        margin-bottom: 8px;
-    }
-
-    .faq-text {
-        margin-bottom: 50px;
-    }
+/* Active answer */
+.faq-list-item.active .faq-list-text {
+    max-height: 300px;
+    opacity: 1;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
 }
 
-/*   #endregion faq  */
+/* Rotate icon when active (optional) */
+.faq-list-item.active .faq-icon {
+    transform: rotate(180deg);
+}
