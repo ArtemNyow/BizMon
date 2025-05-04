@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Business promotion</title>
+    <title>Business promotion - Customers</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
@@ -33,19 +33,10 @@
     <%- include('../../partials/header') %>
 
     <main>
-      <%- include('./sections/hero') %>
-      <%-include('./sections/product') %>
-      <%-include('./sections/management') %>
-      <%-include('./sections/customers') %>
-      <%-include('./sections/collaborative') %>
-      <%-include('./sections/process') %>
-      <%-include('./sections/contents') %>
-
-      <h2 class="price-title">Price Table</h2>
-      <p class="price-text">We offer competitive price</p>
-
-      <%- include('../../partials/price') %> <%-
-      include('./sections/clients') %>
+      <%-include('./sections/our-clients') %>
+      <%-include('./sections/choose-prod') %>
+      <%-include('./sections/work') %>
+      <%-include('./sections/offer') %>
       <%-include('../../partials/compannies') %>
     </main>
     <%- include('../../partials/footer') %>
@@ -77,11 +68,6 @@
       </svg>
     </button>
     >
-
-    <script src="/assets/js/auth-modal.js" defer></script>
-    <script
-      src="/assets/js/scroll-to-top.js"
-      defer
-    ></script>
+    <script type="module" src="/assets/js/main.js"></script>
   </body>
 </html>

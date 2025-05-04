@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <title>Admin Dashboard</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      h2 {
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('../../partials/header') %>
+
+    <main class="container">
+      <h1>Welcome, Admin</h1>
+
+      <h2>👤 Users</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(user => { %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.password %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <h2>📬 Subscribers</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% subscribers.forEach(s => { %>
+          <tr>
+            <td><%= s.email %></td>
+            <td><%= s.submittedAt.toLocaleString() %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <h2>✉️ Contact Forms</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% contacts.forEach(c => { %>
+          <tr>
+            <td><%= c.name %></td>
+            <td><%= c.email %></td>
+            <td><%= c.message %></td>
+            <td><%= c.submittedAt.toLocaleString() %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

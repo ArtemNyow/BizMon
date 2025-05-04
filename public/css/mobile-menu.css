@@ -90,9 +90,13 @@
     background-color: #026f64;
 }
 
-.is-hidden {
-    display: none;
+.sing-in {
+    background-color: #fff;
+    color: #173a56;
+    border: 1px solid #bcd0e5;
 }
+
+
 
 @keyframes slideIn {
     from {
@@ -112,4 +116,109 @@
     to {
         transform: translateX(100%);
     }
+}
+
+.mobile-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #22343d;
+    padding-left: 16px;
+}
+
+.mobile-user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #02897a;
+    /* або рандомний */
+}
+
+
+.mobile-user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding-top: 1rem;
+    font-family: "Poppins", sans-serif;
+    color: #22343d;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+}
+
+.mobile-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.mobile-user-greeting {
+    font-size: 15px;
+    font-weight: 500;
+    color: #22343d;
+    text-align: left;
+    flex: 1;
+}
+
+.mobile-user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: white;
+    background-color: #02897a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.mobile-user-dropdown {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.mobile-dropdown-btn {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem;
+    font-weight: 500;
+    color: #22343d;
+    transition: background-color 0.3s;
+}
+
+.mobile-dropdown-btn:hover {
+    background-color: #d9d9d9;
+}
+
+.mobile-dropdown-btn:hover {
+    background-color: #d2d2d2;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease forwards;
+}
+
+.is-closing {
+    animation: slideOut 0.3s ease forwards;
+}
+
+.is-hidden {
+    display: none;
 }

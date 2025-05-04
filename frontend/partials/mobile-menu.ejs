@@ -1,0 +1,91 @@
+<link rel="stylesheet" href="/css/mobile-menu.css" />
+
+<div
+  class="mobile-menu-backdrop is-hidden"
+  id="mobile-drawer"
+>
+  <div class="mobile-menu">
+    <!-- Кнопка закриття -->
+    <button
+      class="mobile-menu-close"
+      id="close-mobile-menu"
+    >
+      &times;
+    </button>
+
+    <!-- Хедер логотипу -->
+    <div class="mobile-menu-header">
+      <img
+        src="/assets/images/logo/logo.svg"
+        alt="Logo"
+        width="36"
+      />
+      <span class="mobile-menu-title">BizMon</span>
+    </div>
+
+    <!-- Навігація -->
+    <nav class="mobile-menu-nav">
+      <a href="/">Home</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/customers">Customers</a>
+      <a href="/resources">Resources</a>
+    </nav>
+
+    <!-- Дії: реєстрація / логін -->
+    <div
+      class="mobile-menu-actions"
+      id="mobile-auth-buttons"
+    >
+      <button
+        class="header-btn sing-in open-modal-btn"
+        data-target="login-backdrop"
+        data-type="login"
+      >
+        Sign In
+      </button>
+      <button
+        class="header-btn open-modal-btn"
+        data-target="register-backdrop"
+        data-type="register"
+      >
+        Sign Up
+      </button>
+    </div>
+
+    <!-- Інформація про користувача -->
+    <div
+      class="mobile-user-info is-hidden"
+      id="mobile-user-info"
+    >
+      <span class="mobile-user-greeting"
+        >Hello,
+        <span id="mobile-user-name">User</span></span
+      >
+      <div
+        class="mobile-user-avatar"
+        id="mobile-user-avatar"
+      >
+        U
+      </div>
+
+      <!-- Меню користувача -->
+      <div
+        class="mobile-user-dropdown is-hidden"
+        id="mobile-user-dropdown"
+      >
+        <button
+          id="mobile-logout-btn"
+          class="mobile-dropdown-btn"
+        >
+          Log out
+        </button>
+        <button
+          id="mobile-dashboard-btn"
+          class="mobile-dropdown-btn is-hidden"
+        >
+          Admin Dashboard
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,25 +1,39 @@
 {
   "name": "bizmon",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "BizMon SaaS – CRM для управління бізнесом",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-     "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ArtemNyow/BizMon.git"
+    "url": "https://github.com/ArtemNyow/BizMon.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "CRM",
+    "SaaS",
+    "Node.js",
+    "Express",
+    "BizMon"
+  ],
+  "author": "Artem Nyow",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ArtemNyow/BizMon/issues"
   },
   "homepage": "https://github.com/ArtemNyow/BizMon#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
-    "express": "^5.1.0" 
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.14.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^3.0.1"
   }
 }

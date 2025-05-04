@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+export function initFAQ() {
   const faqItems = document.querySelectorAll(".faq-list-item");
 
   faqItems.forEach(item => {
@@ -25,4 +25,4 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     });
   });
-});
+}

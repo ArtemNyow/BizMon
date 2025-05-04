@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Business promotion - Customers</title>
+    <title>Business promotion - Pricing</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
@@ -33,10 +33,18 @@
     <%- include('../../partials/header') %>
 
     <main>
-      <%-include('./sections/our-clients') %>
-      <%-include('./sections/choose-prod') %>
-      <%-include('./sections/work') %>
-      <%-include('./sections/offer') %>
+      <h1 class="title-pricing">PRICING</h1>
+      <h2 class="under-title-pricing">
+        Let’s get some real work done here.
+      </h2>
+      <p class="text-pricing">
+        Prodict is your perfect solution for working. Get
+        started now for free
+      </p>
+      <%- include('../../partials/price') %>
+      <%-include('./sections/enterpreneur') %>
+      <%-include('./sections/product-usage') %>
+      <%-include('./sections/faq') %>
       <%-include('../../partials/compannies') %>
     </main>
     <%- include('../../partials/footer') %>
@@ -68,10 +76,6 @@
       </svg>
     </button>
     >
-    <script src="/assets/js/auth-modal.js" defer></script>
-    <script
-      src="/assets/js/scroll-to-top.js"
-      defer
-    ></script>
+    <script type="module" src="/assets/js/main.js"></script>
   </body>
 </html>
