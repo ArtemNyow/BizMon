@@ -6,73 +6,125 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" href="/css/dashboard.css" />
     <title>Admin Dashboard</title>
-    <style>
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 2rem;
-      }
-      th,
-      td {
-        border: 1px solid #ddd;
-        padding: 8px;
-      }
-      th {
-        background-color: #f2f2f2;
-      }
-      h2 {
-        margin-top: 2rem;
-      }
-    </style>
   </head>
   <body>
-    <%- include('../../partials/header') %>
+    <div class="logo-wrap">
+      <a href="/" class="logo">
+        <img
+          src="/assets/images/logo/logo.svg"
+          alt="Logo"
+          width="40"
+          height="36"
+          class="logo-img"
+        />
+        Product
+      </a>
+    </div>
 
     <main class="container">
       <h1>Welcome, Admin</h1>
 
+      <!-- USERS -->
       <h2>👤 Users</h2>
+      <button class="create-button" data-modal="user">
+        ➕ Add New User
+      </button>
       <table>
         <thead>
           <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Password</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <% users.forEach(user => { %>
           <tr>
-            <td><%= user.name %></td>
-            <td><%= user.email %></td>
-            <td><%= user.password %></td>
+            <td data-label="Name:"><%= user.name %></td>
+            <td data-label="Email:"><%= user.email %></td>
+            <td data-label="Password:">
+              <div class="mobile-password">
+                <div class="hash-text">
+                  <%= user.password %>
+                </div>
+                <button
+                  class="copy-btn"
+                  data-copy-hash="<%= user.password %>"
+                >
+                  📋 Copy
+                </button>
+              </div>
+            </td>
+            <td data-label="Actions:">
+              <button
+                class="edit-btn"
+                data-id="<%= user._id %>"
+                data-type="user"
+              >
+                ✏️
+              </button>
+              <button
+                class="delete-btn"
+                data-id="<%= user._id %>"
+                data-type="user"
+              >
+                🗑️
+              </button>
+            </td>
           </tr>
           <% }) %>
         </tbody>
       </table>
 
+      <!-- SUBSCRIBERS -->
       <h2>📬 Subscribers</h2>
+      <button class="create-button" data-modal="subscriber">
+        ➕ Add Subscriber
+      </button>
       <table>
         <thead>
           <tr>
             <th>Email</th>
             <th>Date</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <% subscribers.forEach(s => { %>
           <tr>
-            <td><%= s.email %></td>
-            <td><%= s.submittedAt.toLocaleString() %></td>
+            <td data-label="Email:"><%= s.email %></td>
+            <td data-label="Date:">
+              <%= s.subscribedAt.toLocaleString() %>
+            </td>
+            <td data-label="Actions:">
+              <button
+                class="edit-btn"
+                data-id="<%= s._id %>"
+                data-type="subscriber"
+              >
+                ✏️
+              </button>
+              <button
+                class="delete-btn"
+                data-id="<%= s._id %>"
+                data-type="subscriber"
+              >
+                🗑️
+              </button>
+            </td>
           </tr>
           <% }) %>
         </tbody>
       </table>
 
+      <!-- CONTACT FORMS -->
       <h2>✉️ Contact Forms</h2>
+      <button class="create-button" data-modal="contact">
+        ➕ Add Contact
+      </button>
       <table>
         <thead>
           <tr>
@@ -80,19 +132,128 @@
             <th>Email</th>
             <th>Message</th>
             <th>Date</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <% contacts.forEach(c => { %>
           <tr>
-            <td><%= c.name %></td>
-            <td><%= c.email %></td>
-            <td><%= c.message %></td>
-            <td><%= c.submittedAt.toLocaleString() %></td>
+            <td data-label="Name:"><%= c.name %></td>
+            <td data-label="Email:"><%= c.email %></td>
+            <td data-label="Message:"><%= c.message %></td>
+            <td data-label="Date:">
+              <%= c.sentAt.toLocaleString() %>
+            </td>
+            <td data-label="Actions:">
+              <button
+                class="edit-btn"
+                data-id="<%= c._id %>"
+                data-type="contact"
+              >
+                ✏️
+              </button>
+              <button
+                class="delete-btn"
+                data-id="<%= c._id %>"
+                data-type="contact"
+              >
+                🗑️
+              </button>
+            </td>
           </tr>
           <% }) %>
         </tbody>
       </table>
     </main>
+
+    <!-- MODALS -->
+    <div id="modal-user" class="modal is-hidden">
+      <div class="modal-content">
+        <h3>Create User</h3>
+        <form id="userForm">
+          <input type="hidden" name="id" />
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <select name="role">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+          <button type="submit">Save</button>
+          <button type="button" class="cancel">
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="modal-subscriber" class="modal is-hidden">
+      <div class="modal-content">
+        <h3>Create Subscriber</h3>
+        <form id="subscriberForm">
+          <input type="hidden" name="id" />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <button type="submit">Save</button>
+          <button type="button" class="cancel">
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="modal-contact" class="modal is-hidden">
+      <div class="modal-content">
+        <h3>Create Contact Message</h3>
+        <form id="contactForm">
+          <input type="hidden" name="id" />
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Message"
+            required
+          ></textarea>
+          <button type="submit">Save</button>
+          <button type="button" class="cancel">
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script
+      src="/assets/js/admin-dashboard.js"
+      defer
+    ></script>
   </body>
 </html>

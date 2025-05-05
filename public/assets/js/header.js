@@ -62,5 +62,6 @@ export function setupDesktopUserUI() {
 
   dashboardBtn?.addEventListener("click", () => {
     window.location.href = "/admin/dashboard";
+    authButtons?.classList.add("is-hidden");
   });
 }
