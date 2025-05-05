@@ -164,3 +164,55 @@ input {
 .close-btn:hover {
     color: #ffffff;
 }
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] {
+    width: 100%;
+    padding-right: 42px;
+    box-sizing: border-box;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-shadow: none;
+    transition: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.toggle-password svg {
+    width: 20px;
+    height: 20px;
+    stroke: #22343d;
+    pointer-events: none;
+}
+
+.toggle-password:hover,
+.toggle-password:focus,
+.toggle-password:active {
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    transform: translateY(-50%);
+}

@@ -26,6 +26,7 @@ export const mobileMenu = {
     this.menuToggle.addEventListener("click", (e) => {
       e.preventDefault();
       this.openDrawer();
+       
     });
 
     this.drawerClose.addEventListener("click", () => this.closeDrawer());
@@ -38,32 +39,52 @@ export const mobileMenu = {
       el.addEventListener("click", () => this.closeDrawer());
     });
 
-    // Клік по аватару — відкриття меню
+    // Клік по аватару — відкриття меню з анімацією
     this.userAvatar?.addEventListener("click", (e) => {
       e.stopPropagation();
-      this.userDropdown.classList.toggle("is-hidden");
+
+      const isOpen = this.userDropdown.classList.contains("open");
+
+      if (isOpen) {
+        this.userDropdown.classList.remove("open");
+        setTimeout(() => {
+          this.userDropdown.classList.add("is-hidden");
+        }, 300);
+      } else {
+        this.userDropdown.classList.remove("is-hidden");
+        requestAnimationFrame(() => {
+          this.userDropdown.classList.add("open");
+        });
+      }
     });
 
     // Закриття меню по кліку поза ним
     document.addEventListener("click", (e) => {
       if (!e.target.closest("#mobile-user-info")) {
-        this.userDropdown.classList.add("is-hidden");
+        if (this.userDropdown.classList.contains("open")) {
+          this.userDropdown.classList.remove("open");
+          setTimeout(() => {
+            this.userDropdown.classList.add("is-hidden");
+          }, 300);
+        }
       }
     });
 
-   // Вихід
-this.logoutBtn?.addEventListener("click", () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("userName");
-  localStorage.removeItem("userRole");
+    // Вихід
+    this.logoutBtn?.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userName");
+      localStorage.removeItem("userRole");
 
-  this.userInfo?.classList.add("is-hidden");
+      this.userInfo?.classList.add("is-hidden");
+      this.userDropdown?.classList.add("is-hidden");
 
-    // this.authButtons?.classList.remove("is-hidden");
-    
-  this.userDropdown?.classList.add("is-hidden");
-
-  this.closeDrawer();
+      this.closeDrawer();
+    });
+    // Перехід до Admin Dashboard
+this.dashboardBtn?.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.href = "/admin/dashboard";
 });
 
   },

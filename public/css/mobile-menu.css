@@ -90,6 +90,19 @@
     background-color: #026f64;
 }
 
+#mobile-user-dropdown {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+}
+
+#mobile-user-dropdown.open {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
 .sing-in {
     background-color: #fff;
     color: #173a56;

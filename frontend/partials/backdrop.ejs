@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="./css/backdrop.css" />
-<!-- Модальне вікно -->
+
+<!-- Модальне вікно для реєстрації -->
 <div class="backdrop is-hidden" id="register-backdrop">
   <div class="modal modal-colored">
     <button class="close-btn" id="close-register">
@@ -15,7 +16,6 @@
       <svg width="28" height="28">
         <use href="./assets/icons.svg#icon-google"></use>
       </svg>
-
       Sign up with Google
     </button>
 
@@ -33,12 +33,26 @@
       </label>
       <label>
         Password
-        <input
-          type="password"
-          name="password"
-          required
-          minlength="6"
-        />
+        <div class="password-container">
+          <input
+            type="password"
+            name="password"
+            id="register-password"
+            required
+            minlength="6"
+          />
+          <button
+            type="button"
+            id="toggle-register-password"
+            class="toggle-password"
+          >
+            <svg width="24" height="24" class="icon-brop">
+              <use
+                href="/assets/icons.svg#icon-eye-off"
+              ></use>
+            </svg>
+          </button>
+        </div>
       </label>
       <button type="submit" class="submit-btn">
         Register
@@ -52,7 +66,7 @@
   </div>
 </div>
 
-<!-- Модальне вікно логіну -->
+<!-- Модальне вікно для логіну -->
 <div class="backdrop is-hidden" id="login-backdrop">
   <div class="modal modal-colored">
     <button class="close-btn" id="close-login">
@@ -72,14 +86,32 @@
     <div class="divider"><span>or</span></div>
 
     <!-- Форма логіну -->
-    <form id="login-form" class="auth-form hidden">
+    <form id="login-form" class="auth-form">
       <label>
         Email
         <input type="email" name="email" required />
       </label>
       <label>
         Password
-        <input type="password" name="password" required />
+        <div class="password-container">
+          <input
+            type="password"
+            name="password"
+            id="login-password"
+            required
+          />
+          <button
+            type="button"
+            id="toggle-login-password"
+            class="toggle-password"
+          >
+            <svg width="24" height="24" class="icon-brop">
+              <use
+                href="/assets/icons.svg#icon-eye-off"
+              ></use>
+            </svg>
+          </button>
+        </div>
       </label>
       <button type="submit" class="submit-btn">
         Sign In

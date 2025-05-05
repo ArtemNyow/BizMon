@@ -5,23 +5,24 @@ import { setupDesktopUserUI  } from './header.js';
 import { initScrollToTop } from './scroll-to-top.js';
 import { initFAQ } from './faq.js'; 
 import { mobileMenu } from './mobile-menu.js';
-
+import { initSubscriptionForms } from "./subscribe.js";
+import { initContactForm } from './contact.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
   modals.init();
 
-
   setupAuthHandlers(modals);
-
 
   setupDesktopUserUI ();
 
-
   initScrollToTop();
 
+  initFAQ();
 
-    initFAQ();
+  initSubscriptionForms();
+
+  initContactForm();
 
     mobileMenu.init();
  const token = localStorage.getItem('token');

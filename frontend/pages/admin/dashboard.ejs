@@ -166,10 +166,10 @@
       </table>
     </main>
 
-    <!-- MODALS -->
+    <!-- USER MODAL -->
     <div id="modal-user" class="modal is-hidden">
       <div class="modal-content">
-        <h3>Create User</h3>
+        <h3 class="form-title">Create User</h3>
         <form id="userForm">
           <input type="hidden" name="id" />
           <input
@@ -184,16 +184,20 @@
             placeholder="Email"
             required
           />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          />
+
+          <div class="password-wrapper">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+          </div>
+
           <select name="role">
             <option value="user">User</option>
             <option value="admin">Admin</option>
           </select>
+
           <button type="submit">Save</button>
           <button type="button" class="cancel">
             Cancel
@@ -202,9 +206,10 @@
       </div>
     </div>
 
+    <!-- SUBSCRIBER MODAL -->
     <div id="modal-subscriber" class="modal is-hidden">
       <div class="modal-content">
-        <h3>Create Subscriber</h3>
+        <h3 class="form-title">Create Subscriber</h3>
         <form id="subscriberForm">
           <input type="hidden" name="id" />
           <input
@@ -221,9 +226,10 @@
       </div>
     </div>
 
+    <!-- CONTACT MODAL -->
     <div id="modal-contact" class="modal is-hidden">
       <div class="modal-content">
-        <h3>Create Contact Message</h3>
+        <h3 class="form-title">Create Contact</h3>
         <form id="contactForm">
           <input type="hidden" name="id" />
           <input

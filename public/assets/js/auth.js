@@ -1,10 +1,41 @@
-import { setupDesktopUserUI  } from './header.js';
+import { setupDesktopUserUI } from './header.js';
 
 export function setupAuthHandlers(modals) {
   const registerForm = document.getElementById("register-form");
   const loginForm = document.getElementById("login-form");
   const registerModal = document.getElementById("register-backdrop");
   const loginModal = document.getElementById("login-backdrop");
+
+  const passwordToggles = [
+    {
+      inputId: "register-password",
+      buttonId: "toggle-register-password",
+    },
+    {
+      inputId: "login-password",
+      buttonId: "toggle-login-password",
+    }
+  ];
+
+  passwordToggles.forEach(({ inputId, buttonId }) => {
+    const input = document.getElementById(inputId);
+    const toggleBtn = document.getElementById(buttonId);
+
+    if (!input || !toggleBtn) return;
+
+    toggleBtn.addEventListener("click", () => {
+      const isHidden = input.type === "password";
+      input.type = isHidden ? "text" : "password";
+
+      const iconUse = toggleBtn.querySelector("use");
+      if (iconUse) {
+        iconUse.setAttribute(
+          "href",
+          isHidden ? "/assets/icons.svg#icon-eye" : "/assets/icons.svg#icon-eye-off"
+        );
+      }
+    });
+  });
 
   registerForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -27,10 +58,9 @@ export function setupAuthHandlers(modals) {
         registerModal.classList.add("is-hidden");
         e.target.reset();
         localStorage.setItem('token', data.token);
-          localStorage.setItem('userName', name);
-       
+        localStorage.setItem('userName', name);
 
-        setupDesktopUserUI (name);
+        setupDesktopUserUI(name);
       } else {
         alert("⚠️ " + (data.message || 'Registration failed'));
       }
@@ -59,9 +89,9 @@ export function setupAuthHandlers(modals) {
         loginModal.classList.add("is-hidden");
         e.target.reset();
         localStorage.setItem('token', data.token);
-          localStorage.setItem('userName', data.name); 
-             localStorage.setItem('userRole', data.role); 
-        setupDesktopUserUI (data.name);
+        localStorage.setItem('userName', data.name);
+        localStorage.setItem('userRole', data.role);
+        setupDesktopUserUI(data.name);
       } else {
         alert("⚠️ " + (data.message || 'Login failed'));
       }
