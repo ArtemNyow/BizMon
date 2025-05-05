@@ -18,41 +18,68 @@ export function setupDesktopUserUI() {
     return;
   }
 
-  // Виводимо імʼя та аватар
+  // Показуємо імʼя і аватар
   authButtons?.classList.add("is-hidden");
   userInfo?.classList.remove("is-hidden");
 
   userNameEl.textContent = name;
   userAvatar.textContent = name.charAt(0).toUpperCase();
 
+  // Кольори аватару
   const colors = ['#02897a', '#ec5f67', '#f6c344', '#4a90e2', '#8e44ad'];
   const colorIndex = [...name].reduce((acc, c) => acc + c.charCodeAt(0), 0) % colors.length;
   userAvatar.style.backgroundColor = colors[colorIndex];
 
+  // Кнопка адмін-панелі
   if (role === "admin") {
     dashboardBtn?.classList.remove("is-hidden");
   } else {
     dashboardBtn?.classList.add("is-hidden");
   }
 
-  // --- Обробники (один раз)
-  if (!userAvatar.dataset.bound) {
-    userAvatar.addEventListener("click", (e) => {
+  // Клік на аватар або "Hello, User"
+  if (!userInfo.dataset.bound) {
+    userInfo.addEventListener("click", (e) => {
       e.stopPropagation();
-      userDropdown?.classList.toggle("is-hidden");
-    });
-    userAvatar.dataset.bound = true;
-  }
 
-  if (!document.body.dataset.dropdownListener) {
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest("#user-info")) {
-        userDropdown?.classList.add("is-hidden");
+      const isOpen = userDropdown.classList.contains("open");
+
+      if (isOpen) {
+        userDropdown.classList.remove("open");
+        userDropdown.addEventListener("transitionend", () => {
+          userDropdown.classList.add("is-hidden");
+        }, { once: true });
+      } else {
+        userDropdown.classList.remove("is-hidden");
+        requestAnimationFrame(() => {
+          userDropdown.classList.add("open");
+        });
       }
     });
-    document.body.dataset.dropdownListener = true;
+
+    userInfo.dataset.bound = "true";
   }
 
+  // Закриття дропдауна по кліку поза ним
+  if (!document.body.dataset.dropdownListener) {
+    document.addEventListener("click", (e) => {
+      if (
+        !e.target.closest("#user-info") &&
+        !e.target.closest("#user-dropdown")
+      ) {
+        if (userDropdown.classList.contains("open")) {
+          userDropdown.classList.remove("open");
+          userDropdown.addEventListener("transitionend", () => {
+            userDropdown.classList.add("is-hidden");
+          }, { once: true });
+        }
+      }
+    });
+
+    document.body.dataset.dropdownListener = "true";
+  }
+
+  // Logout
   logoutBtn?.addEventListener("click", () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userName");
@@ -60,8 +87,8 @@ export function setupDesktopUserUI() {
     location.reload();
   });
 
+  // Admin Dashboard
   dashboardBtn?.addEventListener("click", () => {
     window.location.href = "/admin/dashboard";
-    authButtons?.classList.add("is-hidden");
   });
 }

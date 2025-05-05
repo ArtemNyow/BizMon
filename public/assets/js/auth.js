@@ -1,5 +1,6 @@
 import { setupDesktopUserUI } from './header.js';
 
+
 export function setupAuthHandlers(modals) {
   const registerForm = document.getElementById("register-form");
   const loginForm = document.getElementById("login-form");
@@ -60,7 +61,9 @@ export function setupAuthHandlers(modals) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('userName', name);
 
-        setupDesktopUserUI(name);
+         setTimeout(() => {
+    setupDesktopUserUI(data.name);
+  }, 0);
       } else {
         alert("⚠️ " + (data.message || 'Registration failed'));
       }
@@ -91,7 +94,9 @@ export function setupAuthHandlers(modals) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('userName', data.name);
         localStorage.setItem('userRole', data.role);
-        setupDesktopUserUI(data.name);
+       setTimeout(() => {
+    setupDesktopUserUI(data.name);
+  }, 0);
       } else {
         alert("⚠️ " + (data.message || 'Login failed'));
       }

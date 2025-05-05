@@ -1,10 +1,12 @@
-/*  #region Header */
+/* === #region Header === */
 
 .header-container {
     display: flex;
-    box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.25);
     justify-content: space-between;
+    align-items: center;
     padding: 17px 27px 17px 32px;
+    position: relative;
+    box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.25);
 }
 
 .logo {
@@ -16,14 +18,9 @@
     display: flex;
     align-items: center;
     gap: 8px;
-
 }
 
-
-.header-nav-list {
-    display: none;
-}
-
+.header-nav-list,
 .header-btn-list {
     display: none;
 }
@@ -35,25 +32,27 @@
 }
 
 .menu-link:focus,
-.menu-link:hover.menu-link:active {
+.menu-link:hover,
+.menu-link:active {
     border: none;
     background-color: unset;
     box-shadow: none;
 }
 
 .user-info {
-    display: noneg;
+    display: none;
 }
 
-@media screen and (min-width:1440px) {
+@media screen and (min-width: 1440px) {
     .header-section {
         height: 80px;
     }
 
     .header-container {
         padding: 0 145px;
+        max-width: 1440px;
+        margin: 0 auto;
         box-shadow: none;
-
     }
 
     .header-nav {
@@ -67,16 +66,23 @@
         padding: 26px;
     }
 
-    .header-btn-list {
-        display: flex;
-        gap: 21px;
-        align-items: center;
-    }
-
     .header-nav-link {
         font-weight: 400;
         line-height: 1.75;
         color: #22343d;
+    }
+
+    .header-btn-list {
+        display: flex;
+        gap: 21px;
+        align-items: center;
+        position: relative;
+    }
+
+    .desktop-auth-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
     }
 
     .header-btn {
@@ -89,18 +95,16 @@
     }
 
     .sing-in {
-        border: none;
+        border: 1px solid #bcd0e5;
         border-radius: 4px;
         width: 113px;
         height: 42px;
         background-color: #fff;
         color: #173a56;
-        border: 1px solid #bcd0e5;
     }
 
     .menu-link {
         display: none;
-
     }
 
     .user-info {
@@ -111,14 +115,15 @@
         font-size: 18px;
         font-weight: 500;
         color: #22343d;
-        position: static;
-        /* Видаляємо абсолютне позиціювання */
+        cursor: pointer;
+        position: relative;
     }
 
     .user-greeting {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 500;
         color: #22343d;
+        user-select: none;
     }
 
     .user-avatar {
@@ -133,25 +138,35 @@
         align-items: center;
         justify-content: center;
         text-transform: uppercase;
+        user-select: none;
     }
 
-    .user-info {
-        position: relative;
-        cursor: pointer;
-    }
-
+    /* === Dropdown Styles === */
     .user-dropdown {
         position: absolute;
-        top: 80px;
-        right: 160px;
-        background-color: #ffffff;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+        top: 100%;
+        right: 0;
+        margin-top: 10px;
+        background-color: #fff;
         border-radius: 6px;
         padding: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+        z-index: 1000;
+        pointer-events: none;
         display: flex;
         flex-direction: column;
         gap: 10px;
-        z-index: 1000;
+    }
+
+    .user-dropdown.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 
     .dropdown-btn {
@@ -162,18 +177,12 @@
         cursor: pointer;
         color: #22343d;
         font-weight: 500;
+        text-align: left;
+        transition: background-color 0.2s ease;
     }
 
     .dropdown-btn:hover {
         background-color: #e0e0e0;
-    }
-
-    .desktop-auth-buttons {
-        display: flex;
-        flex-direction: row;
-        gap: 24px;
-
-
     }
 }
 
@@ -181,5 +190,4 @@
     display: none;
 }
 
-
-/*   #endregion Header */
+/* === #endregion Header === */

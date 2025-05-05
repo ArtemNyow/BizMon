@@ -4,6 +4,7 @@
 <!-- #region Header -->
 <header class="header">
   <div class="container header-container">
+    <!-- Logo -->
     <a href="/" class="logo">
       <img
         src="/assets/images/logo/logo.svg"
@@ -15,6 +16,7 @@
       Product
     </a>
 
+    <!-- Навігація -->
     <nav class="header-nav">
       <ul class="header-nav-list">
         <li class="header-nav-item">
@@ -40,52 +42,55 @@
       </ul>
     </nav>
 
+    <!-- Кнопки входу / виходу -->
     <ul class="header-btn-list" id="auth-buttons">
-      <div
+      <li
         class="desktop-auth-buttons"
         id="desktop-auth-buttons"
       >
-        <li class="header-btn-item">
-          <button
-            class="header-btn sing-in open-modal-btn"
-            type="button"
-            data-target="login-backdrop"
-            data-type="login"
-          >
-            Sign In
-          </button>
-        </li>
-        <li class="header-btn-item">
-          <button
-            class="header-btn open-modal-btn"
-            type="button"
-            data-target="register-backdrop"
-            data-type="register"
-          >
-            Sign Up
-          </button>
-        </li>
-      </div>
-      <li class="user-info is-hidden" id="user-info">
-        <span class="user-greeting"
-          >Hello, <span id="user-name">User</span></span
+        <button
+          class="header-btn sing-in open-modal-btn"
+          type="button"
+          data-target="login-backdrop"
+          data-type="login"
         >
-        <div class="user-avatar" id="user-avatar">U</div>
+          Sign In
+        </button>
+        <button
+          class="header-btn open-modal-btn"
+          type="button"
+          data-target="register-backdrop"
+          data-type="register"
+        >
+          Sign Up
+        </button>
+      </li>
+
+      <!-- Обгортка для user info та dropdown -->
+      <li class="user-dropdown-wrapper">
+        <div class="user-info is-hidden" id="user-info">
+          <span class="user-greeting"
+            >Hello, <span id="user-name">User</span></span
+          >
+          <div class="user-avatar" id="user-avatar">U</div>
+        </div>
+
+        <!-- Dropdown меню -->
+        <div class="user-dropdown" id="user-dropdown">
+          <button id="logout-btn" class="dropdown-btn">
+            Log out
+          </button>
+          <button
+            id="dashboard-btn"
+            class="dropdown-btn is-hidden"
+          >
+            Admin Dashboard
+          </button>
+        </div>
       </li>
     </ul>
 
-    <div class="user-dropdown is-hidden" id="user-dropdown">
-      <button id="logout-btn" class="dropdown-btn">
-        Log out
-      </button>
-      <button
-        id="dashboard-btn"
-        class="dropdown-btn is-hidden"
-      >
-        Admin Dashboard
-      </button>
-    </div>
-
+    <!-- Мобільне меню -->
     <button class="menu-link" type="button">
       <svg width="28" height="31">
         <use href="./assets/icons.svg#icon-menu-link"></use>
