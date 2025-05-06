@@ -47,11 +47,13 @@ router.get(
 
     const name = encodeURIComponent(user.name || '');
     const avatar = encodeURIComponent(user.avatar || '');
-    const redirectUrl = `${process.env.CLIENT_URL}/?token=${token}&name=${name}&avatar=${avatar}`;
+    const role = encodeURIComponent(user.role || 'user'); 
+    const redirectUrl = `${process.env.CLIENT_URL}/?token=${token}&name=${name}&avatar=${avatar}&role=${role}`; 
 
     return res.redirect(redirectUrl);
   }
 );
+
 
 // (опціонально, не обов’язково)
 router.get('/google/success', (req, res) => {
