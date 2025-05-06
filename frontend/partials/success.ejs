@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Logging in...</title>
+    <script>
+      (function () {
+        const params = new URLSearchParams(
+          window.location.search
+        );
+        const token = params.get('token');
+        const name = params.get('name');
+        const avatar = params.get('avatar');
+        const role = params.get('role');
+
+        if (token && name) {
+          localStorage.setItem('token', token);
+          localStorage.setItem('userName', name);
+          if (avatar)
+            localStorage.setItem('userAvatar', avatar);
+          if (role) localStorage.setItem('userRole', role);
+
+          window.location.href = '/';
+        } else {
+          alert('Google login failed');
+          window.location.href = '/';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Logging in...</p>
+  </body>
+</html>

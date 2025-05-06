@@ -94,6 +94,7 @@ input {
     margin-bottom: 1rem;
     cursor: not-allowed;
     color: #797979;
+    user-select: none
 }
 
 .google-btn:hover {

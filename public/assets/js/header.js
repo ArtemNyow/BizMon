@@ -1,7 +1,18 @@
 export function setupDesktopUserUI() {
-  const token = localStorage.getItem("token");
-  const name = localStorage.getItem("userName");
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('token') || localStorage.getItem("token");
+  const name = params.get('name') || localStorage.getItem("userName");
+  const avatar = params.get('avatar') || localStorage.getItem("userAvatar");
   const role = localStorage.getItem("userRole");
+
+  if (params.get('token')) {
+    localStorage.setItem("token", token);
+    localStorage.setItem("userName", name);
+    if (avatar) localStorage.setItem("userAvatar", avatar);
+
+    const cleanUrl = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
+  }
 
   const authButtons = document.getElementById("desktop-auth-buttons");
   const userInfo = document.getElementById("user-info");
@@ -15,35 +26,35 @@ export function setupDesktopUserUI() {
     authButtons?.classList.remove("is-hidden");
     userInfo?.classList.add("is-hidden");
     userDropdown?.classList.add("is-hidden");
-    return;
-  }
-
-  // Показуємо імʼя і аватар
-  authButtons?.classList.add("is-hidden");
-  userInfo?.classList.remove("is-hidden");
-
-  userNameEl.textContent = name;
-  userAvatar.textContent = name.charAt(0).toUpperCase();
-
-  // Кольори аватару
-  const colors = ['#02897a', '#ec5f67', '#f6c344', '#4a90e2', '#8e44ad'];
-  const colorIndex = [...name].reduce((acc, c) => acc + c.charCodeAt(0), 0) % colors.length;
-  userAvatar.style.backgroundColor = colors[colorIndex];
-
-  // Кнопка адмін-панелі
-  if (role === "admin") {
-    dashboardBtn?.classList.remove("is-hidden");
   } else {
-    dashboardBtn?.classList.add("is-hidden");
+    authButtons?.classList.add("is-hidden");
+    userInfo?.classList.remove("is-hidden");
+    userNameEl.textContent = name;
+
+    if (avatar?.startsWith("http")) {
+      userAvatar.style.backgroundImage = `url(${avatar})`;
+      userAvatar.style.backgroundSize = "cover";
+      userAvatar.style.backgroundPosition = "center";
+      userAvatar.textContent = "";
+    } else {
+      userAvatar.style.backgroundImage = "";
+      userAvatar.textContent = name.charAt(0).toUpperCase();
+      const colors = ['#02897a', '#ec5f67', '#f6c344', '#4a90e2', '#8e44ad'];
+      const colorIndex = [...name].reduce((acc, c) => acc + c.charCodeAt(0), 0) % colors.length;
+      userAvatar.style.backgroundColor = colors[colorIndex];
+    }
+
+    if (role === "admin") {
+      dashboardBtn?.classList.remove("is-hidden");
+    } else {
+      dashboardBtn?.classList.add("is-hidden");
+    }
   }
 
-  // Клік на аватар або "Hello, User"
   if (!userInfo.dataset.bound) {
     userInfo.addEventListener("click", (e) => {
       e.stopPropagation();
-
       const isOpen = userDropdown.classList.contains("open");
-
       if (isOpen) {
         userDropdown.classList.remove("open");
         userDropdown.addEventListener("transitionend", () => {
@@ -56,17 +67,12 @@ export function setupDesktopUserUI() {
         });
       }
     });
-
     userInfo.dataset.bound = "true";
   }
 
-  // Закриття дропдауна по кліку поза ним
   if (!document.body.dataset.dropdownListener) {
     document.addEventListener("click", (e) => {
-      if (
-        !e.target.closest("#user-info") &&
-        !e.target.closest("#user-dropdown")
-      ) {
+      if (!e.target.closest("#user-info") && !e.target.closest("#user-dropdown")) {
         if (userDropdown.classList.contains("open")) {
           userDropdown.classList.remove("open");
           userDropdown.addEventListener("transitionend", () => {
@@ -75,20 +81,23 @@ export function setupDesktopUserUI() {
         }
       }
     });
-
     document.body.dataset.dropdownListener = "true";
   }
 
-  // Logout
   logoutBtn?.addEventListener("click", () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userRole");
+    localStorage.clear();
     location.reload();
   });
 
-  // Admin Dashboard
   dashboardBtn?.addEventListener("click", () => {
     window.location.href = "/admin/dashboard";
   });
+
+  // 🎯 Обробка обох Google Sign-In кнопок
+  const googleLoginBtn = document.getElementById("google-login-btn");
+  const googleRegisterBtn = document.getElementById("google-register-btn");
+  const redirectToGoogle = () => window.location.href = "/api/auth/google";
+
+  googleLoginBtn?.addEventListener("click", redirectToGoogle);
+  googleRegisterBtn?.addEventListener("click", redirectToGoogle);
 }
