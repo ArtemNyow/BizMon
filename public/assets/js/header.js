@@ -3,16 +3,17 @@ export function setupDesktopUserUI() {
   const token = params.get('token') || localStorage.getItem("token");
   const name = params.get('name') || localStorage.getItem("userName");
   const avatar = params.get('avatar') || localStorage.getItem("userAvatar");
-  const role = localStorage.getItem("userRole");
+  const role = params.get('role') || localStorage.getItem("userRole");
 
-  if (params.get('token')) {
-    localStorage.setItem("token", token);
-    localStorage.setItem("userName", name);
-    if (avatar) localStorage.setItem("userAvatar", avatar);
+if (params.get('token')) {
+  localStorage.setItem("token", token);
+  localStorage.setItem("userName", name);
+  if (avatar) localStorage.setItem("userAvatar", avatar);
+  if (role) localStorage.setItem("userRole", role); 
+  const cleanUrl = window.location.origin + window.location.pathname;
+  window.history.replaceState({}, document.title, cleanUrl);
+}
 
-    const cleanUrl = window.location.origin + window.location.pathname;
-    window.history.replaceState({}, document.title, cleanUrl);
-  }
 
   const authButtons = document.getElementById("desktop-auth-buttons");
   const userInfo = document.getElementById("user-info");
