@@ -7,28 +7,25 @@ import { initFAQ } from './faq.js';
 import { mobileMenu } from './mobile-menu.js';
 import { initSubscriptionForms } from "./subscribe.js";
 import { initContactForm } from './contact.js';
+import { showNotification } from './notification.js';
+
+// Доступ до showNotification глобально (опціонально)
+window.showNotification = showNotification;
 
 document.addEventListener("DOMContentLoaded", () => {
-
   modals.init();
-
   setupAuthHandlers(modals);
-
-  setupDesktopUserUI ();
-
+  setupDesktopUserUI();
   initScrollToTop();
-
   initFAQ();
-
   initSubscriptionForms();
-
   initContactForm();
+  mobileMenu.init();
 
-    mobileMenu.init();
- const token = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
   const name = localStorage.getItem('userName');
 
   if (token && name) {
-    setupDesktopUserUI (name);
+    setupDesktopUserUI(name);
   }
 });

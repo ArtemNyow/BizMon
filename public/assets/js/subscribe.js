@@ -1,3 +1,4 @@
+import { showNotification } from './notification.js';
 
 export function initSubscriptionForms() {
   const forms = [
@@ -6,22 +7,27 @@ export function initSubscriptionForms() {
   ];
 
   forms.forEach(form => {
-    if (!form) return; // Перевірка на наявність форми
+    if (!form) return;
 
     const emailInput = form.querySelector("input[name='email']");
-    if (!emailInput) {
-      console.warn("Email input not found in form", form);
-      return;
-    }
+    const submitButton = form.querySelector("button[type='submit']");
+
+    if (!emailInput || !submitButton) return;
+
+    // НЕ вимикаємо дефолтну валідацію
+    // form.setAttribute("novalidate", "true"); <-- прибрано
+
+    const handleSuccess = () => {
+      emailInput.disabled = true;
+      submitButton.disabled = true;
+      submitButton.textContent = "Subscribed";
+    };
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const email = emailInput.value.trim();
 
-      if (!email) {
-        alert("Please enter a valid email");
-        return;
-      }
+      const email = emailInput.value.trim();
+      if (!email) return;
 
       try {
         const res = await fetch("/api/subscribers", {
@@ -30,16 +36,16 @@ export function initSubscriptionForms() {
           body: JSON.stringify({ email })
         });
 
-        if (res.ok) {
-          alert("✅ Subscribed successfully!");
-          form.reset();
+        const data = await res.json();
+
+        if (res.status === 201) {
+          handleSuccess();
         } else {
-          const { error } = await res.json();
-          alert("❌ Error: " + (error || "Unable to subscribe"));
-        }
+          showNotification("📬 This email is already subscribed. Please wait for updates.");
+  
+        } 
       } catch (err) {
-        console.error(err);
-        alert("❌ Network error");
+        showNotification('❌ Server error. Please try again later.');
       }
     });
   });

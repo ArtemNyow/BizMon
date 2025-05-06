@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="./css/backdrop.css" />
 
-<!-- Модальне вікно для реєстрації -->
+<!-- 🟩 REGISTER -->
 <div class="backdrop is-hidden" id="register-backdrop">
   <div class="modal modal-colored">
     <button class="close-btn" id="close-register">
@@ -11,7 +11,6 @@
       Create an account to use all features
     </p>
 
-    <!-- Кнопка Google Sign-In -->
     <button id="google-register-btn" class="google-btn">
       <svg width="28" height="28">
         <use href="./assets/icons.svg#icon-google"></use>
@@ -21,39 +20,53 @@
 
     <div class="divider"><span>or</span></div>
 
-    <!-- Форма реєстрації -->
     <form id="register-form" class="auth-form">
-      <label>
-        Full Name
-        <input type="text" name="name" required />
-      </label>
-      <label>
-        Email
-        <input type="email" name="email" required />
-      </label>
+      <label
+        >Full Name <input type="text" name="name" required
+      /></label>
+      <label
+        >Email <input type="email" name="email" required
+      /></label>
       <label>
         Password
-        <div class="password-container">
-          <input
-            type="password"
-            name="password"
-            id="register-password"
-            required
-            minlength="6"
-          />
-          <button
-            type="button"
-            id="toggle-register-password"
-            class="toggle-password"
+        <div class="password-wrapper">
+          <div class="password-container">
+            <input
+              type="password"
+              name="password"
+              id="register-password"
+              required
+              minlength="6"
+            />
+            <button
+              type="button"
+              id="toggle-register-password"
+              class="toggle-password"
+            >
+              <svg width="24" height="24">
+                <use
+                  href="/assets/icons.svg#icon-eye-off"
+                ></use>
+              </svg>
+            </button>
+          </div>
+          <small
+            id="register-password-error"
+            class="error-message is-hidden"
           >
-            <svg width="24" height="24" class="icon-brop">
-              <use
-                href="/assets/icons.svg#icon-eye-off"
-              ></use>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm.75 15h-1.5v-1.5h1.5V17zm0-3h-1.5v-6h1.5v6z"
+              />
             </svg>
-          </button>
+            <span
+              >Password must be at least 6 characters,
+              include uppercase and a digit.</span
+            >
+          </small>
         </div>
       </label>
+
       <button type="submit" class="submit-btn">
         Register
       </button>
@@ -66,7 +79,7 @@
   </div>
 </div>
 
-<!-- Модальне вікно для логіну -->
+<!-- 🟦 LOGIN -->
 <div class="backdrop is-hidden" id="login-backdrop">
   <div class="modal modal-colored">
     <button class="close-btn" id="close-login">
@@ -75,7 +88,6 @@
     <h2>Welcome Back</h2>
     <p class="subtitle">Log in to your account</p>
 
-    <!-- Кнопка Google Sign-In -->
     <button id="google-login-btn" class="google-btn">
       <svg width="28" height="28">
         <use href="./assets/icons.svg#icon-google"></use>
@@ -85,12 +97,10 @@
 
     <div class="divider"><span>or</span></div>
 
-    <!-- Форма логіну -->
     <form id="login-form" class="auth-form">
-      <label>
-        Email
-        <input type="email" name="email" required />
-      </label>
+      <label
+        >Email <input type="email" name="email" required
+      /></label>
       <label>
         Password
         <div class="password-container">
@@ -105,7 +115,7 @@
             id="toggle-login-password"
             class="toggle-password"
           >
-            <svg width="24" height="24" class="icon-brop">
+            <svg width="24" height="24">
               <use
                 href="/assets/icons.svg#icon-eye-off"
               ></use>
@@ -122,5 +132,35 @@
       Don't have an account?
       <a href="#" id="switch-to-register">Register here</a>
     </p>
+  </div>
+</div>
+
+<!-- 🟨 2FA VERIFY -->
+<div
+  class="backdrop backdrop-verify is-hidden"
+  id="verify-2fa-backdrop"
+>
+  <div class="modal modal-colored">
+    <button class="close-btn" id="close-verify">
+      &times;
+    </button>
+    <h2>Verify your email</h2>
+    <p class="subtitle">
+      Enter the 6-digit code sent to your email
+    </p>
+
+    <form id="verify-2fa-form" class="auth-form">
+      <label
+        >Code
+        <input
+          type="text"
+          name="code"
+          maxlength="6"
+          required
+      /></label>
+      <button type="submit" class="submit-btn">
+        Verify
+      </button>
+    </form>
   </div>
 </div>

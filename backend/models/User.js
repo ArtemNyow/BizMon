@@ -8,6 +8,9 @@ const UserSchema = new mongoose.Schema(
     googleId: { type: String }, 
     avatar: { type: String },   
     role: { type: String, enum: ['user', 'admin'], default: 'user' },
+    verificationCode: { type: String },
+codeExpires: { type: Date },
+
   },
   { timestamps: true }
 );

@@ -37,9 +37,10 @@
 .great-input {
     border: 1px solid #eaeaea;
     border-radius: 100px;
-    width: 346px;
+    width: 446px;
     height: 66px;
     padding-left: 23px;
+    padding-right: 160px;
 }
 
 .great-input::placeholder {
@@ -52,11 +53,11 @@
 
 .great-btn {
     position: absolute;
-    left: 216px;
+    left: 296px;
     top: 13px;
     border-radius: 100px;
     padding: 24px;
-    width: 122px;
+    width: 142px;
     height: 50px;
     background: #02897a;
     font-weight: 600;

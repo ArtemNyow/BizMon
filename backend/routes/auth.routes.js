@@ -6,21 +6,29 @@ const router = express.Router();
 const authController = require('../controllers/auth.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 
-// Звичайна реєстрація/логін
-router.post('/register', authController.register);
-router.post('/login', authController.login);
+// ====== Стандартна автентифікація ======
 
-// Авторизований запит
+// Реєстрація з 2FA
+router.post('/register', authController.register);
+router.post('/verify-registration', authController.verifyRegistration);
+
+// Логін з 2FA
+router.post('/login', authController.login);
+router.post('/verify-login', authController.verify2FA);
+
+// Запит на перевірку автентифікації
 router.get('/me', authMiddleware, (req, res) => {
   res.json({ message: 'You are authenticated!', user: req.user });
 });
 
-// ==== GOOGLE AUTH ====
+// ====== Google OAuth ======
+
+// Перенаправлення на Google
 router.get('/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-// Успішна авторизація
+// Обробка callback після Google авторизації
 router.get(
   '/google/callback',
   passport.authenticate('google', {
@@ -34,12 +42,12 @@ router.get(
       { expiresIn: '7d' }
     );
 
-   
     const redirectUrl = `/api/auth/google/success?token=${token}&name=${encodeURIComponent(req.user.name)}&avatar=${encodeURIComponent(req.user.avatar || '')}&role=${req.user.role}`;
     res.redirect(redirectUrl);
   }
 );
 
+// EJS-шаблон успішного логіну через Google
 router.get('/google/success', (req, res) => {
   res.render('partials/success');
 });

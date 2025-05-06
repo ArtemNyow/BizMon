@@ -217,3 +217,31 @@ input {
     box-shadow: none;
     transform: translateY(-50%);
 }
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 70px;
+    /* вистачає простору для помилки */
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.75rem;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.3s ease;
+}
+
+.error-message svg {
+    width: 16px;
+    height: 16px;
+    fill: #e74c3c;
+}
+
+.is-hidden {
+    display: none;
+}

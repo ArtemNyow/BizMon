@@ -1,3 +1,5 @@
+import { showNotification } from './notification.js';
+
 export function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
@@ -6,22 +8,28 @@ export function initContactForm() {
     e.preventDefault();
 
     const formData = {
-      name: form.querySelector('input[name="name"]').value,
-      email: form.querySelector('input[name="email"]').value,
-      message: form.querySelector('textarea[name="message"]').value,
+      name: form.querySelector('input[name="name"]').value.trim(),
+      email: form.querySelector('input[name="email"]').value.trim(),
+      message: form.querySelector('textarea[name="message"]').value.trim(),
     };
 
-    const res = await fetch('/api/contacts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const res = await fetch('/api/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    if (res.ok) {
-      alert('Message sent successfully!');
-      form.reset();
-    } else {
-      alert('Error sending message.');
+      if (res.ok) {
+        showNotification('✅ Message sent successfully!');
+        form.reset();
+      } else {
+        const data = await res.json();
+        showNotification(data.message || '⚠️ Failed to send message. Please try again.');
+      }
+    } catch (err) {
+      showNotification('❌ Server error. Please try again later.');
     }
   });
 }
+ 

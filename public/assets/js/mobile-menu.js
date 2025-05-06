@@ -89,33 +89,44 @@ this.dashboardBtn?.addEventListener("click", (e) => {
 
   },
 
-  renderUserInfo() {
-    const token = localStorage.getItem("token");
-    const name = localStorage.getItem("userName");
-    const role = localStorage.getItem("userRole");
+renderUserInfo() {
+  const token = localStorage.getItem("token");
+  const name = localStorage.getItem("userName");
+  const avatar = localStorage.getItem("userAvatar");
+  const role = localStorage.getItem("userRole");
 
-    if (!token || !name) {
-      this.authButtons?.classList.remove("is-hidden");
-      this.userInfo?.classList.add("is-hidden");
-      return;
-    }
+  if (!token || !name) {
+    this.authButtons?.classList.remove("is-hidden");
+    this.userInfo?.classList.add("is-hidden");
+    return;
+  }
 
-    this.authButtons?.classList.add("is-hidden");
-    this.userInfo?.classList.remove("is-hidden");
+  this.authButtons?.classList.add("is-hidden");
+  this.userInfo?.classList.remove("is-hidden");
 
-    this.userName.textContent = name;
+  this.userName.textContent = name;
+
+  if (avatar && avatar.startsWith("http")) {
+    this.userAvatar.style.backgroundImage = `url(${avatar})`;
+    this.userAvatar.style.backgroundSize = "cover";
+    this.userAvatar.style.backgroundPosition = "center";
+    this.userAvatar.textContent = "";
+  } else {
+    this.userAvatar.style.backgroundImage = "";
     this.userAvatar.textContent = name.charAt(0).toUpperCase();
 
     const colors = ['#02897a', '#ec5f67', '#f6c344', '#4a90e2', '#8e44ad'];
     const colorIndex = [...name].reduce((acc, c) => acc + c.charCodeAt(0), 0) % colors.length;
     this.userAvatar.style.backgroundColor = colors[colorIndex];
+  }
 
-    if (role === "admin") {
-      this.dashboardBtn?.classList.remove("is-hidden");
-    } else {
-      this.dashboardBtn?.classList.add("is-hidden");
-    }
-  },
+  if (role === "admin") {
+    this.dashboardBtn?.classList.remove("is-hidden");
+  } else {
+    this.dashboardBtn?.classList.add("is-hidden");
+  }
+},
+
 
   openDrawer() {
     this.drawer.classList.remove("is-hidden");
