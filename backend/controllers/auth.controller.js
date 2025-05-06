@@ -1,12 +1,11 @@
+// controllers/auth.controller.js
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const sendEmail = require('../config/mailer');
 
-// Email regex для базової перевірки
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// === Реєстрація з перевіркою коду ===
 exports.register = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -41,7 +40,6 @@ exports.register = async (req, res) => {
   }
 };
 
-// === Підтвердження коду реєстрації ===
 exports.verifyRegistration = async (req, res) => {
   const { email, code } = req.body;
   const entry = global.tempRegistrations?.[email];
@@ -60,7 +58,11 @@ exports.verifyRegistration = async (req, res) => {
 
     delete global.tempRegistrations[email];
 
-    const token = jwt.sign({ id: newUser._id, role: newUser.role }, process.env.JWT_SECRET || 'secret');
+    const token = jwt.sign(
+      { id: newUser._id, role: newUser.role },
+      process.env.JWT_SECRET || 'secret'
+    );
+
     res.status(201).json({ token, name: newUser.name, role: newUser.role, avatar: newUser.avatar });
   } catch (err) {
     console.error(err);
@@ -68,7 +70,6 @@ exports.verifyRegistration = async (req, res) => {
   }
 };
 
-// === Логін з 2FA ===
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -98,7 +99,6 @@ exports.login = async (req, res) => {
   }
 };
 
-// === Перевірка коду логіну ===
 exports.verify2FA = async (req, res) => {
   const { email, code } = req.body;
 
@@ -112,7 +112,11 @@ exports.verify2FA = async (req, res) => {
     user.codeExpires = null;
     await user.save();
 
-    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET || 'secret');
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET || 'secret'
+    );
+
     res.json({ token, name: user.name, role: user.role, avatar: user.avatar });
   } catch (err) {
     console.error(err);
