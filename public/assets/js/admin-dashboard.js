@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // OPEN MODALS (Create)
+
   document.querySelectorAll(".create-button").forEach(button => {
     button.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // CLOSE MODALS
   document.querySelectorAll(".modal .cancel").forEach(button => {
     button.addEventListener("click", () => {
       const modal = button.closest(".modal");
@@ -45,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // CLOSE ON BACKDROP CLICK
+
   document.addEventListener("click", (e) => {
     document.querySelectorAll(".modal").forEach((modal) => {
       if (!modal.classList.contains("is-hidden") && !modal.querySelector(".modal-content").contains(e.target)) {
@@ -54,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // DELETE HANDLER
   document.querySelectorAll('.delete-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
       const type = btn.dataset.type;
@@ -69,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // EDIT HANDLER
   document.querySelectorAll('.edit-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
       const type = btn.dataset.type;
@@ -100,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // FORM SUBMISSION
   const forms = {
     user: document.getElementById('userForm'),
     subscriber: document.getElementById('subscriberForm'),
@@ -120,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
           email: form['email'].value,
           role: form['role'].value,
         };
-        if (!id) payload.password = form['password'].value; // Only on create
+        if (!id) payload.password = form['password'].value; 
       } else if (type === 'subscriber') {
         payload = { email: form['email'].value };
       } else if (type === 'contact') {

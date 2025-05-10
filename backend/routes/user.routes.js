@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
-// Get one user (без пароля)
+
 router.get('/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id).select('-password');
@@ -14,7 +14,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create user (з хешуванням пароля)
+
 router.post('/', async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update user (з перевіркою чи треба оновити пароль)
+
 router.put('/:id', async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -58,7 +58,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete user
+
 router.delete('/:id', async (req, res) => {
   try {
     const result = await User.findByIdAndDelete(req.params.id);

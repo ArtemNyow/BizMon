@@ -32,7 +32,6 @@ router.delete('/users/:id', async (req, res) => {
   res.json({ success: !!result });
 });
 
-// --- SUBSCRIBERS ---
 router.get('/subscribers/:id', async (req, res) => {
   const sub = await Subscriber.findById(req.params.id);
   if (!sub) return res.status(404).send('Subscriber not found');
@@ -58,7 +57,7 @@ router.delete('/subscribers/:id', async (req, res) => {
   res.json({ success: !!result });
 });
 
-// --- CONTACT MESSAGES ---
+
 router.get('/contacts/:id', async (req, res) => {
   const contact = await ContactMessage.findById(req.params.id);
   if (!contact) return res.status(404).send('Contact not found');

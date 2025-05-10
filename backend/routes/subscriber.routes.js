@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Subscriber = require('../models/Subscriber');
 
-// Get all
+
 router.get('/', async (req, res) => {
   try {
     const subs = await Subscriber.find();
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get one
+
 router.get('/:id', async (req, res) => {
   try {
     const sub = await Subscriber.findById(req.params.id);
@@ -23,7 +23,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create
 router.post('/', async (req, res) => {
   try {
     const sub = await Subscriber.create(req.body);
@@ -33,7 +32,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update
 router.put('/:id', async (req, res) => {
   try {
     const updated = await Subscriber.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -43,7 +41,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete
 router.delete('/:id', async (req, res) => {
   try {
     const result = await Subscriber.findByIdAndDelete(req.params.id);

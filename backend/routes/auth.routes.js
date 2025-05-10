@@ -6,7 +6,6 @@ const router = express.Router();
 const authController = require('../controllers/auth.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 
-// ====== Стандартна автентифікація ======
 router.post('/register', authController.register);
 router.post('/verify-registration', authController.verifyRegistration);
 
@@ -17,19 +16,16 @@ router.get('/me', authMiddleware, (req, res) => {
   res.json({ message: 'You are authenticated!', user: req.user });
 });
 
-// ====== Google OAuth ======
 
-// 🔐 Редирект на Google з обов'язковим `scope`
 router.get(
   '/google',
   passport.authenticate('google', {
     scope: ['profile', 'email'],
-    prompt: 'select_account', // змушує обрати акаунт
+    prompt: 'select_account', 
     session: false
   })
 );
 
-// ✅ Callback обробник після авторизації
 router.get(
   '/google/callback',
   passport.authenticate('google', {
@@ -55,7 +51,6 @@ router.get(
 );
 
 
-// (опціонально, не обов’язково)
 router.get('/google/success', (req, res) => {
   res.render('partials/success');
 });
