@@ -1,6 +1,6 @@
 /*  #region Choose-Prod */
 .choose-prod-container {
-    background-color: #f5f5f5;
+    background: linear-gradient(180deg, #f5f5f5 0%, rgba(245, 245, 245, 0) 100%);
     padding: 24px 25px 61px 25px;
 }
 
