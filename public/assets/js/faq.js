@@ -6,7 +6,7 @@ export function initFAQ() {
     const icon = item.querySelector(".faq-icon use");
 
     container.addEventListener("click", () => {
-      // Закриваємо всі інші
+
       faqItems.forEach(i => {
         if (i !== item) {
           i.classList.remove("active");
@@ -17,7 +17,6 @@ export function initFAQ() {
       const isActive = item.classList.contains("active");
       item.classList.toggle("active");
 
-      // Змінюємо іконку
       icon.setAttribute("href",
         isActive
           ? "./assets/icons.svg#icon-plus_circle"
