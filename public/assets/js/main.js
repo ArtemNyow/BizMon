@@ -1,4 +1,4 @@
-// Імпорт необхідних модулів
+
 import { modals } from './modal.js';
 import { setupAuthHandlers } from './auth.js';
 import { setupDesktopUserUI  } from './header.js';
@@ -9,7 +9,7 @@ import { initSubscriptionForms } from "./subscribe.js";
 import { initContactForm } from './contact.js';
 import { showNotification } from './notification.js';
 
-// Доступ до showNotification глобально (опціонально)
+
 window.showNotification = showNotification;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,7 +25,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem('token');
   const name = localStorage.getItem('userName');
 
-  if (token && name) {
-    setupDesktopUserUI(name);
-  }
+
 });
